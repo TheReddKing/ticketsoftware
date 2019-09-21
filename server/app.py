@@ -12,7 +12,7 @@ if "DATABASE_URL" in app.config:
     app.config["SQLALCHEMY_DATABASE_URI"] = app.config["DATABASE_URL"]
 
 # Database
-# db = SQLAlchemy(app)
+db = SQLAlchemy(app)
 
 if app.config["DEBUG"]:
     app.debug = True

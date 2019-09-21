@@ -18,7 +18,7 @@ import useViewer, { Query } from "./hooks/useViewer";
 const AppHeader: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const { viewer, isLoggedIn } = useViewer();
-  const { logout, redirectToDopeAuth } = useLogin();
+  const { logout } = useLogin();
   const viewerButton = isLoggedIn ? (
     <UncontrolledDropdown nav inNavbar>
       <DropdownToggle nav caret>
@@ -28,11 +28,7 @@ const AppHeader: React.FC = () => {
         <DropdownItem onClick={logout}>Logout</DropdownItem>
       </DropdownMenu>
     </UncontrolledDropdown>
-  ) : (
-    <NavItem>
-      <NavLink onClick={redirectToDopeAuth}>Login with DopeAuth</NavLink>
-    </NavItem>
-  );
+  ) : null;
   return (
     <div>
       <Navbar color="light" light expand="md">
@@ -41,7 +37,7 @@ const AppHeader: React.FC = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="mailto:help@hackmit.org">Contact Us</NavLink>
+              <NavLink href="mailto:mitcsc@mit.edu">Contact Us</NavLink>
             </NavItem>
             {viewerButton}
           </Nav>

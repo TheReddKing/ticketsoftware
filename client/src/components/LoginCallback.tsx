@@ -18,20 +18,13 @@ const LoginCallback = (props: RouteComponentProps) => {
   const search = new URLSearchParams(props.location.search);
   const { login } = useLogin();
   React.useEffect(() => {
-    const id = search.get("id");
     const token = search.get("token");
-    const email = search.get("email");
     if (isLoggedIn) {
       window.location.replace("/");
     }
-    if (
-      id != null &&
-      token != null &&
-      email != null &&
-      loginStatus === Status.start
-    ) {
+    if (token != null && loginStatus === Status.start) {
       setLoginStatus(0);
-      login(id, email, token).then((success: Boolean) => {
+      login(token).then((success: Boolean) => {
         setLoginStatus(success ? Status.succeed : Status.failed);
       });
     } else if (loginStatus === Status.start) {

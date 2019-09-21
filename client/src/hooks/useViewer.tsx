@@ -4,16 +4,16 @@ import { useCookies } from "react-cookie";
 
 export enum Query {
   name = "name",
-  year = "year",
-  email = "email"
+  token = "token",
+  limit = "limit"
 }
 
 const useViewer = () => {
-  const [cookies] = useCookies([Query.name, Query.year, Query.email]);
+  const [cookies] = useCookies([Query.token]);
   const viewer = (value: Query) => {
     return cookies[value];
   };
-  const isLoggedIn = React.useMemo(() => cookies[Query.email] != null, [
+  const isLoggedIn = React.useMemo(() => cookies[Query.token] != null, [
     cookies
   ]);
   return { viewer, isLoggedIn };

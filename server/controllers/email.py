@@ -87,7 +87,10 @@ background-color: #f6f6f6;
                     <p dir="ltr" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
                         Hello! <br /> 
                         <br/>
-                        This email is your confirmation for Utopia 2019 Boat Cruise! You'll get an email closer to the date for logistics
+                        This email is your confirmation for Utopia 2019 Boat Cruise! 
+                        <br/> <br/>The event is on Friday October 18th from 7:30-10:30 PM.
+                        <br/>
+                        Boarding at the <b>World Trade Center Pier</b> begins at 7 PM and the boat will leave promptly at 7:30 PM! Do not be late!
                       &nbsp;</p>
                       <p dir="ltr" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"><span style="font-size:24px"><strong id="docs-internal-guid-05ac6949-7fff-78e9-28f1-aea63f1f2541">Check-in</strong></span></p>
                     <p dir="ltr" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
@@ -95,6 +98,8 @@ background-color: #f6f6f6;
                         <div><img src="http://api.qrserver.com/v1/create-qr-code/?data={{qrcode}}&size=200x200" /></div>
                         You can print this QR code or use it on your mobile device!<br>
                     &nbsp;</p>
+                    
+                    <p dir="ltr" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"><span style="font-size:24px"><strong id="docs-internal-guid-05ac6949-7fff-78e9-28f1-aea63f1f2541"></strong></span></p>
                     
                     <p dir="ltr" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"></p>
                     

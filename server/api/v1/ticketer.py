@@ -43,7 +43,7 @@ class Add(Resource):
                 retry -= 1
             else:
                 committed = True
-        sendCodeEmail(user, ticket.code)
+        sendCodeEmail(email, ticket.code)
         return {'success': True}
 
 

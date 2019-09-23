@@ -16,7 +16,7 @@ class Ticket(db.Model):
 
     notes = db.Column(db.Text, default="")
 
-    def __init__(self, email, notes, user):
+    def __init__(self, email, notes, user, ticketNumber=""):
         self.email = email
         self.notes = notes
         self.user = user

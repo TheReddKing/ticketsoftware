@@ -13,12 +13,15 @@ ticketAddParser.add_argument(
     'token', help='User Token cannot be blank', required=True)
 ticketAddParser.add_argument(
     'notes', help='Notes cannot be blank', required=True)
+ticketAddParser.add_argument(
+    'tickets', help='Num of tickets', required=True)
 
 class Add(Resource):
     def post(self):
         data = ticketAddParser.parse_args()
         email = data['email']
         notes = data['notes']
+        numtickets = min(int(data['tickets']), 10)
         token = data['token']
         user = User.query.filter_by(token=token).first()
         if (user is None):
@@ -27,23 +30,23 @@ class Add(Resource):
             return {'success': False, 'error': "Email incorrect"}
         # Limiting tickets sold!
         if (user.ticket_limit != 0):
-            if(Ticket.query.filter_by(user=user).count() > user.ticket_limit):
+            if(Ticket.query.filter_by(user=user).count() + numtickets > user.ticket_limit):
                 return {'success': False, 'error': 'Too many tickets!'}
-        
-        ticket = Ticket(email, notes, user)
-        retry = 10
-        committed = False
-        while (not committed and retry > 0):
-            try:
-                db.session.add(ticket)
-                db.session.commit()
-            except exc.IntegrityError:
-                db.session.rollback()
-                ticket.generateCode()
-                retry -= 1
-            else:
-                committed = True
-        sendCodeEmail(email, ticket.code)
+        for i in range(min(numtickets, 10)):
+            ticket = Ticket(email, notes + " - " + str(i+1) + "/" + str(numtickets), user)
+            retry = 10
+            committed = False
+            while (not committed and retry > 0):
+                try:
+                    db.session.add(ticket)
+                    db.session.commit()
+                except exc.IntegrityError:
+                    db.session.rollback()
+                    ticket.generateCode()
+                    retry -= 1
+                else:
+                    committed = True
+            sendCodeEmail(email, "Ticket " + str(i+1), ticket.code)
         return {'success': True}
 
 

@@ -17,6 +17,7 @@ const LandingPage = () => {
   const [searchValue, setSearchValue] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [note, setNote] = React.useState("");
+  const [tickets, setTickets] = React.useState("1");
   const [data, setData] = React.useState([]);
   const [limit, setLimit] = React.useState(0);
   const allKeys = ["email", "code", "notes"];
@@ -90,6 +91,7 @@ const LandingPage = () => {
         <p> Email: </p>
         <Input
           value={email}
+          type="email"
           onChange={e => setEmail(e.currentTarget.value)}
         ></Input>
         <p> Name/Info</p>
@@ -97,19 +99,39 @@ const LandingPage = () => {
           value={note}
           onChange={e => setNote(e.currentTarget.value)}
         ></Input>
+        <p># of tickets</p>
+        <Input
+          value={tickets}
+          type="number"
+          onChange={e => setTickets(e.currentTarget.value)}
+        ></Input>
         <Button
           onClick={async () => {
+            if (parseInt(tickets) > 10) {
+              createAlert(AlertType.Error, "You can't give that many tickets!");
+              return;
+            }
+            if (
+              email.length == 0 ||
+              !email.includes("@") ||
+              !email.includes(".")
+            ) {
+              createAlert(AlertType.Error, "Email might be incorrect?");
+              return;
+            }
             if (!window.confirm("Are you sure? with " + email)) {
               return;
             }
             const ret = await ServerHelper.post(ServerURL.add, {
               ...getCredentials(),
               email: email,
-              notes: note
+              notes: note,
+              tickets: tickets
             });
             if (ret.success) {
               setEmail("");
               setNote("");
+              setTickets("1");
               createAlert(AlertType.Success, "Made Ticket!");
               updateData();
             } else {

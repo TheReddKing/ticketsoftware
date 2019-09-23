@@ -2,8 +2,7 @@ from server import app
 import requests
 
 
-def sendCodeEmail(email, token):
-    # print("SENDING", email, token)
+def sendCodeEmail(email, message, token):
     return requests.post(
         "https://api.mailgun.net/v3/mail.dopeauth.com/messages",
         auth=("api", app.config['MAILGUN_API']),
@@ -12,7 +11,7 @@ def sendCodeEmail(email, token):
             "to": [email],
             "html": template.replace("""{{qrcode}}""", token),
             "subject":
-            "Utopia 2019 Ticket Confirmation - Water Penguin",
+            "Utopia 2019 - " + message + " - Water Penguin",
         })
 
 

@@ -9,5 +9,5 @@ def createUser(tickets, name, is_admin):
     user = User(tickets, name, is_admin)
     db.session.add(user)
     db.session.commit()
-    print("CREATED USER " + user.name)
+    print("CREATED USER " + user.description)
     print("TOKEN: " + user.token)

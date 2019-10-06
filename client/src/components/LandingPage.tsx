@@ -20,7 +20,7 @@ const LandingPage = () => {
   const [tickets, setTickets] = React.useState("1");
   const [data, setData] = React.useState([]);
   const [limit, setLimit] = React.useState(0);
-  const allKeys = ["email", "code", "notes"];
+  const allKeys = ["email", "code", "notes", "user"];
 
   const updateData = async () => {
     const resp = await ServerHelper.post(ServerURL.get, getCredentials());
@@ -144,7 +144,7 @@ const LandingPage = () => {
       </InputGroup>
       <br />
       <p>
-        You have given {data.length} out of {limit} tickets
+        You have given {data.length} out of {limit} tickets. You are currently viewing {filteredList.length} tickets.
       </p>
 
       <Input
